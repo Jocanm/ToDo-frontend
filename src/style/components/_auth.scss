@@ -1,0 +1,57 @@
+.auth__public-layout{
+    @apply w-full h-screen grid place-content-center;
+    // background-image: 
+    // radial-gradient(#0099ff33 1px, transparent 1px),
+    // radial-gradient(#4B4DED50 1px, transparent 1px);
+    // background-position: 0 0, 25px 25px;
+    // background-size:50px 50px;
+}
+
+.auth__container{
+    @apply w-screen h-screen rounded-lg p-10 grid grid-cols-1 place-content-center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    background-color: #f9f9f9;
+
+    & > h2{
+        @apply font-medium text-2xl text-gray-900;
+    }
+
+    & > h3 {
+        @apply text-gray-800 text-center;
+        & span{
+            @apply text-orange-500 hover:text-orange-700 cursor-pointer font-medium text-sm
+        }
+    }
+
+    & button {
+        @apply bg-orange-400 px-2 py-2 rounded-lg text-white font-medium hover:bg-orange-500;
+    }
+}
+
+@media (min-width: 501px) {
+    .auth__container{
+        height:85vh;
+        width:465px;
+    }
+}
+
+.auth__input-container{
+    @apply flex flex-col gap-4 mb-5 mt-10 border-b-2 pb-7;
+}
+
+.auth__brand-login{
+    @apply my-4;
+    
+    & h2{
+        @apply text-center text-sm text-gray-700;
+    }
+
+    & div {
+        @apply text-2xl flex justify-center gap-7 mt-2
+    }
+
+    & i {
+        @apply border-2 p-2 rounded-full cursor-pointer;
+    }
+
+}
