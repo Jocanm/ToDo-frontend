@@ -5,7 +5,7 @@ export const Input = ({ name, placeholder, defaultValue, type = "text", variant 
     return (
         <TextField
             style={{
-                outline:"none"
+                outline:"none",
             }}
             name={name}
             label={placeholder}

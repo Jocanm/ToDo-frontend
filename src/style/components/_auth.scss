@@ -1,10 +1,10 @@
 .auth__public-layout{
     @apply w-full h-screen grid place-content-center;
-    // background-image: 
-    // radial-gradient(#0099ff33 1px, transparent 1px),
-    // radial-gradient(#4B4DED50 1px, transparent 1px);
-    // background-position: 0 0, 25px 25px;
-    // background-size:50px 50px;
+    background-image: 
+    radial-gradient(rgb(238, 135, 61) 1px, transparent 1px),
+    radial-gradient(#4B4DED50 1px, transparent 1px);
+    background-position: 0 0, 25px 25px;
+    background-size:50px 50px;
 }
 
 .auth__container{
@@ -24,7 +24,7 @@
     }
 
     & button {
-        @apply bg-orange-400 px-2 py-2 rounded-lg text-white font-medium hover:bg-orange-500;
+        @apply bg-orange-400 px-2 py-2 rounded-lg text-white font-medium hover:bg-orange-500 disabled:bg-gray-300;
     }
 }
 

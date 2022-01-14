@@ -2,15 +2,35 @@ import React from 'react'
 import { Input } from '../../components/Input'
 import { useNavigate } from 'react-router-dom'
 import { ButtonLoading } from '../../components/ButtonLoading'
+import { useDispatch, useSelector } from 'react-redux'
+import { useFormData } from '../../hooks/useFormData'
+import { validateLoginUser } from '../../helpers/validateAuthForm'
+import { startLogin } from '../../redux/actions/authActions'
 
 export const Login = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {authLoading} = useSelector(state=>state.ui)
+
+    const {form,formData,updateFormData} = useFormData()
+
+    const handleLoginUser = (e) => {
+        e.preventDefault()
+        if(validateLoginUser(formData)){
+            dispatch(startLogin(formData))
+        }
+    }
+
 
     return (
         <div className="auth__container">
             <h2>Login to Your Account</h2>
-            <form className="auth__input-container">
+            <form 
+            onSubmit={handleLoginUser}
+            ref={form}
+            onChange={updateFormData}
+            className="auth__input-container">
                 <Input
                     required={false}
                     name="email"
@@ -26,7 +46,8 @@ export const Login = () => {
                     size="small"
                 />
                 <ButtonLoading
-                    loading={false}
+                    disabled={Object.keys(formData).length === 0}
+                    loading={authLoading}
                     text="Start now"
                 />
             </form>

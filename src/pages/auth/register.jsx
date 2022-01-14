@@ -1,16 +1,35 @@
 import React from 'react'
+import toast from 'react-hot-toast'
+import { Input } from '../../components/Input'
 import { useNavigate } from 'react-router-dom'
 import { ButtonLoading } from '../../components/ButtonLoading'
-import { Input } from '../../components/Input'
+import { useFormData } from '../../hooks/useFormData'
+import { validateRegisterUser } from '../../helpers/validateAuthForm'
+import { useDispatch, useSelector } from 'react-redux'
+import { startRegister } from '../../redux/actions/authActions'
 
 export const Register = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {authLoading} = useSelector(state=>state.ui)
+    const {form,formData,updateFormData} = useFormData()
+
+    const handleRegister = (e) => {
+        e.preventDefault()
+        if(validateRegisterUser(formData)){
+            dispatch(startRegister(formData))
+        }
+    }
 
     return (
         <div className="auth__container">
             <h2>Create a new account</h2>
-            <form className="auth__input-container">
+            <form 
+            onSubmit={handleRegister}
+            onChange={updateFormData}
+            ref = {form}
+            className="auth__input-container">
                 <Input
                     required={false}
                     name="name"
@@ -32,8 +51,16 @@ export const Register = () => {
                     type="password"
                     size="small"
                 />
+                <Input
+                    required={false}
+                    name="password2"
+                    placeholder="Confirm Password"
+                    type="password"
+                    size="small"
+                />
                 <ButtonLoading
-                    loading={false}
+                    loading={authLoading}
+                    disabled={Object.keys(formData).length === 0}
                     text="Join us"
                 />
             </form>
