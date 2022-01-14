@@ -1,9 +1,13 @@
 .index__main-screen{
-    @apply h-screen;
+    @apply h-screen bg-gray-100;
+}
+
+.index__navbar-container{
+    @apply bg-orange-400;
 }
 
 .index__navbar{
-    @apply bg-orange-400 py-2 px-10 shadow-lg text-white flex justify-between items-center gap-3 ;
+    @apply py-2 px-10 md:px-20 lg:px-48 shadow-lg text-white flex justify-between items-center gap-3 container mx-auto;
 
     & div{
         @apply flex gap-2 items-center;
@@ -19,22 +23,61 @@
 }
 
 .index__content{
-    @apply py-10 px-10 h-full;
-    background-color: #f1f1f1;
+    @apply py-10 px-10 md:px-20 lg:px-48 h-full container mx-auto;
 
     & h1{
-        @apply text-2xl text-gray-700 font-bold;
+        @apply text-2xl text-gray-700 font-bold cursor-default;
     }
 }
 
 .index__todo-input{
-    @apply mt-10 w-full;
+    @apply mt-6 w-full flex flex-col gap-2 md:flex-row;
 
     & input {
-        @apply outline-none py-2 px-4 rounded-lg bg-inherit border-2 border-white
+        @apply outline-none py-2 px-4 rounded-lg bg-inherit border-2 border-white md:w-9/12;
     }
 
     & button{
-        
+        @apply px-4 py-2 bg-orange-400 hover:bg-orange-500 text-white font-medium rounded-lg md:w-1/4;
     }
 }
+
+.index__todos-filter{
+    @apply mt-4 flex gap-4 text-gray-400;
+
+    & li{
+        @apply cursor-pointer;
+    }
+}
+
+.index__todo-list{
+    @apply mt-8 flex flex-col gap-6;
+
+    & h4{
+        @apply text-gray-700 font-medium;
+    }
+
+    & i{
+        @apply  cursor-pointer;
+    }
+
+}
+
+.index__todo-item{
+    
+    @apply border-b-2 border-orange-400 pb-2 flex justify-between items-center;
+
+    & > div{
+        @apply flex gap-3;
+    }
+
+}
+
+.index__todo-done{
+
+        @apply border-2 p-1 border-orange-400 text-gray-100 rounded;
+
+        &:hover{
+            @apply bg-orange-400 text-white;
+        }
+    }
