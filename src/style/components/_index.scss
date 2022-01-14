@@ -66,7 +66,7 @@
 .index__todo-item{
     
     // border-b-2 border-orange-400 pb-2
-    @apply flex justify-between items-center bg-white px-2 py-4 rounded-lg;
+    @apply flex justify-between items-center bg-white px-2 py-4 rounded-lg gap-3;
 
     & > div{
         @apply flex items-center gap-3;

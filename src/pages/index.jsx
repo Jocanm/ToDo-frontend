@@ -12,6 +12,8 @@ export const Index = () => {
     const [loading,setLoading] = useState(false)
     const dispatch = useDispatch()
 
+    const [doneTodos,setDoneTodos] = useState(false)
+
     const handleCreateTask = async(e) => {
         e.preventDefault()
         if(title.length < 3){
@@ -42,11 +44,15 @@ export const Index = () => {
                 />
             </form>
             <ul className="index__todos-filter">
-                <li>Active</li>
+                <li 
+                onClick={()=>{setDoneTodos(false)}}
+                className={`${!doneTodos && 'text-gray-900 font-bold'}`}>Active</li>
                 <span className="cursor-default">/</span>
-                <li>Completed</li>
+                <li 
+                onClick={()=>{setDoneTodos(true)}}
+                className={`${doneTodos && 'text-gray-900 font-bold'}`}>Completed</li>
             </ul>
-            <TodosList />
+            <TodosList doneTodos={doneTodos}/>
         </div>
     )
 }
