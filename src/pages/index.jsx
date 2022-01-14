@@ -9,21 +9,27 @@ export const Index = () => {
     const { id } = useSelector(state => state.auth)
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        if(!id){
+    useEffect(() => {
+        if (!id) {
             navigate("/auth/login")
         }
-    },[id,navigate])
+    }, [id, navigate])
 
-    if(!id){
-        return <Loading/>
+    if (!id) {
+        return <Loading />
     }
 
     return (
         <div className="index__main-screen">
-            <Navbar/>
+            <Navbar />
             <div className="index__content">
-                Pagina de contenido
+                <h1>Lets get started</h1>
+                <div className="index__todo-input">
+                    <input 
+                    placeholder="New task"
+                    type="text" />
+                    <button>Save</button>
+                </div>
             </div>
         </div>
     )
