@@ -33,7 +33,7 @@ export const Index = () => {
                 <input
                     value={title}
                     onChange={(e)=>{setTitle(e.target.value)}}
-                    placeholder="Add a new task"
+                    placeholder="Add a new todo"
                     type="text" />
                 <ButtonLoading
                 text="Save"

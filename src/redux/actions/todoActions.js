@@ -57,18 +57,18 @@ export const startCreateTodo = (title) => {
 
 }
 
-export const startChangeDoneTodo = (id,done,title) => {
+export const startUpdateTodo = (id,done,title,userId) => {
 
     return async(dispatch) => {
 
+        dispatch(todosUpdateTodo({id,done,title,userId}))
         try {
             
-            const res = await fetchConToken(`todos/${id}`,{done:!done,title},'PUT')
+            const res = await fetchConToken(`todos/${id}`,{done,title},'PUT')
             const body = await res.json()
 
             if(body.ok){
                 toast.success(body.msg,toastStyle)
-                dispatch(todosUpdateTodo(body.todo))
                 console.log(body);
             }
 
@@ -83,6 +83,32 @@ export const startChangeDoneTodo = (id,done,title) => {
 
     }
 }
+// export const startUpdateTodo = (id,done,title,userId) => {
+
+//     return async(dispatch) => {
+
+//         try {
+            
+//             const res = await fetchConToken(`todos/${id}`,{done,title},'PUT')
+//             const body = await res.json()
+
+//             if(body.ok){
+//                 toast.success(body.msg,toastStyle)
+//                 dispatch(todosUpdateTodo(body.todo))
+//                 console.log(body);
+//             }
+
+//             else{
+//                 toast.error(body.msg)
+//             }
+
+//         } catch (error) {
+//             console.log(error);
+//             toast.error("Something went wrong :/",toastStyle)
+//         }
+
+//     }
+// }
 
 const todosUpdateTodo = (todo) => ({
     type:types.todosUpdateTodo,
