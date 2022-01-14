@@ -1,0 +1,31 @@
+.modal__container{
+    @apply p-10
+}
+
+.modal__title{
+    @apply text-orange-500 font-bold text-2xl border-b-2 pb-2;
+}
+
+.modal__main-content{
+    @apply mt-2;
+
+    & p{
+        @apply mb-2
+    }
+}
+
+.modal__form{
+    @apply mt-4 flex flex-col items-center gap-2;
+
+    & input{
+        @apply outline-none px-2 py-1 border rounded-md w-full;
+    }
+
+}
+
+.modal__button-container{
+    @apply flex items-center justify-between gap-4 w-full;
+    & button {
+        @apply bg-orange-400 hover:bg-orange-500 text-white font-medium px-2 py-1 rounded-md w-full;
+    }
+}

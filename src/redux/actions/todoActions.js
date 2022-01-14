@@ -111,6 +111,43 @@ export const starteDeletingTodo = (id) => {
 
 }
 
+export const startCreatingCatsTodos = (todos) => {
+
+    return async(dispatch,getState) => {
+
+        const {id} = getState().auth
+
+        const catTodos = todos.map(e=>{
+            return {
+                title:e.fact,
+                userId:id
+            }
+        })
+
+        console.log("Cat facts editados",catTodos);
+
+        try {
+
+            const res = await fetchConToken('todos/many',{catTodos},'POST')
+            const body = await res.json()
+            console.log(body);
+            if(body.ok){
+                await dispatch(startGettingTodos())
+                toast.success(body.msg,toastStyle)
+            }
+            else{
+                toast.error(body.msg,toastStyle)
+            }
+
+        } catch (error) {
+            console.error(error);
+            toast.error("Something went wrong :/",toastStyle)
+        }
+
+    }
+
+}
+
 // export const startUpdateTodo = (id,done,title,userId) => {
 
 //     return async(dispatch) => {
