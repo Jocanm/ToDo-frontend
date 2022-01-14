@@ -7,29 +7,32 @@ import { PublicLayout } from '../layout/PublicLayout'
 import { useDispatch, useSelector } from 'react-redux'
 import { Loading } from '../components/LoadingView'
 import { startRefreshToken } from '../redux/actions/authActions'
+import { PrivateLayout } from '../layout/PrivateLayout'
 
 export const AppRoutes = () => {
 
     const dispatch = useDispatch()
-    const {checking} = useSelector(state=>state.auth)
+    const { checking } = useSelector(state => state.auth)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(startRefreshToken())
-    },[dispatch])
+    }, [dispatch])
 
-    if(checking) {
-        return <Loading/>
+    if (checking) {
+        return <Loading />
     }
 
     return (
-            <Router>
-                <Routes>
+        <Router>
+            <Routes>
+                <Route element={<PrivateLayout/>}>
                     <Route path="/" element={<Index />} />
-                    <Route element={<PublicLayout />}>
-                        <Route path="/auth/login" element={<Login />} />
-                        <Route path="/auth/register" element={<Register />} />
-                    </Route>
-                </Routes>
-            </Router>
+                </Route>
+                <Route element={<PublicLayout />}>
+                    <Route path="/auth/login" element={<Login />} />
+                    <Route path="/auth/register" element={<Register />} />
+                </Route>
+            </Routes>
+        </Router>
     )
 }

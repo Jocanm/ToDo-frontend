@@ -14,7 +14,26 @@ export const todosReducer = (state=initialState,action) => {
                 ...state,
                 todos:action.payload
             }
+        
+        case types.todosCreateTodo:
+            return {
+                ...state,
+                todos:[...state.todos,action.payload]
+            }
 
+        case types.todosUpdateTodo:
+            return {
+                ...state,
+                todos:state.todos.map(e=>{
+                    if(e.id === action.payload.id){
+                        return action.payload
+                    }
+                    else{
+                        return e
+                    }
+                })
+            }
+        
         default:
             return state;
     }

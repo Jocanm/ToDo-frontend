@@ -1,9 +1,9 @@
 import ReactLoading from 'react-loading';
 
-export const Loading = ({color="#000"}) => {
+export const Loading = ({color="#000",height='8%',width='8%',fullScreen=true}) => {
     return (
-        <div className="h-screen mx-auto flex items-center justify-center">
-            <ReactLoading type="spin" height="8%" width="8%" color={color} />
+        <div className={`${fullScreen && 'h-screen mx-auto flex items-center justify-center'}`}>
+            <ReactLoading type="spin" height={height} width={width} color={color} />
         </div>
     )
 }
