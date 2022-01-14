@@ -11,6 +11,7 @@
     @apply w-screen h-screen rounded-lg p-10 grid grid-cols-1 place-content-center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     background-color: #f9f9f9;
+    max-height: 613px;
 
     & > h2{
         @apply font-medium text-2xl text-gray-900;
@@ -30,7 +31,7 @@
 
 @media (min-width: 501px) {
     .auth__container{
-        height:85vh;
+        height:80vh;
         width:465px;
     }
 }
