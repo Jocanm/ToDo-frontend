@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 import { Tooltip } from '@mui/material'
 import { useDispatch } from 'react-redux'
-import { startUpdateTodo } from '../../redux/actions/todoActions'
+import { starteDeletingTodo, startUpdateTodo } from '../../redux/actions/todoActions'
 import { Loading } from '../LoadingView'
+import { toastStyle } from '../../helpers/toastStyle'
 
 export const TodosItem = ({ title, done, id, userId }) => {
 
@@ -13,18 +14,22 @@ export const TodosItem = ({ title, done, id, userId }) => {
     const [todoDescription, setTodoDescription] = useState(title)
 
     const changeTodoState = async () => {
-        // setLoading(true)
-        await dispatch(startUpdateTodo(id, !done, title))
-        // setLoading(false)
+        setLoading(true)
+        await dispatch(startUpdateTodo(id, !done, title, userId))
+        setLoading(false)
     }
 
     const editTodoTitle = () => {
         if(todoDescription.length < 3){
-            toast.error("Description must be at least 3 characters")
+            toast.error("Description must be at least 3 characters",toastStyle)
             return;
         }
         dispatch(startUpdateTodo(id,done, todoDescription))
         setEditMode(false)
+    }
+
+    const deleteTodo = () => {
+        dispatch(starteDeletingTodo(id))
     }
 
     return (
@@ -40,9 +45,9 @@ export const TodosItem = ({ title, done, id, userId }) => {
                 }
                 {
                     !editMode ?
-                        <h4 className={`${done && 'line-through'} cursor-pointer`}>{title}</h4> :
+                        <h4 className={`${done && 'line-through'}`}>{title}</h4> :
                         <input 
-                        className="outline-none border px-1 border-gray-200 rounded-lg w-full"
+                        className="outline-none border-2 px-1 border-gray-200 rounded-lg w-full"
                         type="text" 
                         value={todoDescription} 
                         onChange={(e) => { setTodoDescription(e.target.value) }} />
@@ -58,7 +63,9 @@ export const TodosItem = ({ title, done, id, userId }) => {
                             className="fas fa-edit"></i>
                         </Tooltip>
                         <Tooltip title="Delete Todo" placement="top" arrow>
-                            <i className="fas fa-trash"></i>
+                            <i 
+                            onClick={deleteTodo}
+                            className="fas fa-trash"></i>
                         </Tooltip>
                         </>:
                         <>

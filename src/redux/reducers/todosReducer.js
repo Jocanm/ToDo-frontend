@@ -33,6 +33,12 @@ export const todosReducer = (state=initialState,action) => {
                     }
                 })
             }
+
+        case types.todosDeleteTodos:
+            return {
+                ...state,
+                todos:state.todos.filter(e=>e.id !== action.payload)
+            }
         
         default:
             return state;

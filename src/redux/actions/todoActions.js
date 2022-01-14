@@ -83,6 +83,34 @@ export const startUpdateTodo = (id,done,title,userId) => {
 
     }
 }
+
+export const starteDeletingTodo = (id) => {
+
+    return async(dispatch) => {
+
+        dispatch(todosDeleteTodo(id))
+        try {
+            
+            const res = await fetchConToken(`todos/${id}`,{},'DELETE')
+            const body = await res.json()
+
+            if(body.ok){
+                toast.success(body.msg,toastStyle)
+            }
+
+            else{
+                toast.error(body.msg,toastStyle)
+            }
+
+        } catch (error) {
+            console.error(error);
+            toast.error("Something went wrong :/",toastStyle)
+        }
+
+    }
+
+}
+
 // export const startUpdateTodo = (id,done,title,userId) => {
 
 //     return async(dispatch) => {
@@ -109,6 +137,11 @@ export const startUpdateTodo = (id,done,title,userId) => {
 
 //     }
 // }
+
+const todosDeleteTodo = (id) => ({
+    type:types.todosDeleteTodos,
+    payload:id
+})
 
 const todosUpdateTodo = (todo) => ({
     type:types.todosUpdateTodo,
