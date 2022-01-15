@@ -1,5 +1,5 @@
 // const baseUrl = 'http://localhost:4000/api'
-const baseUrl = 'https://todo-backend-joc.herokuapp.com/'
+const baseUrl = 'https://todo-backend-joc.herokuapp.com/api'
 
 export const fetchSinToken = (endpoint,data,method = 'GET') => {
 
