@@ -30,6 +30,7 @@ La aplicación le permite al usuario:
 
 
 - [React](https://reactjs.org/)
+- [Redux](https://es.redux.js.org)
 - [Tailwind](https://tailwindcss.com/)
 - [MUI](https://mui.com)
 - [SASS](https://sass-lang.com)
