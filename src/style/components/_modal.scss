@@ -1,9 +1,17 @@
 .modal__container{
-    @apply p-10
+    @apply p-10;
+}
+
+.modal__searcher{
+    
+    & input{
+        @apply w-full outline-none px-2 py-1 border-2 mt-3 rounded-md;
+    }
+
 }
 
 .modal__title{
-    @apply text-orange-500 font-bold text-2xl border-b-2 pb-2;
+    @apply text-orange-500 font-bold text-xl sm:text-2xl border-b-2 pb-2;
 }
 
 .modal__main-content{

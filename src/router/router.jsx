@@ -25,7 +25,7 @@ export const AppRoutes = () => {
     return (
         <Router>
             <Routes>
-                <Route element={<PrivateLayout/>}>
+                <Route element={<PrivateLayout />}>
                     <Route path="/" element={<Index />} />
                 </Route>
                 <Route element={<PublicLayout />}>

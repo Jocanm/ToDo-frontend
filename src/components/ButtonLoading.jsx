@@ -1,9 +1,11 @@
 import ReactLoading from 'react-loading'
 
 
-export const ButtonLoading = ({ disabled, loading, text, className = "" }) => {
+export const ButtonLoading = ({ disabled, loading, text, className = "",type="submit", onClick=()=>{} }) => {
     return (
         <button
+            onClick={onClick}
+            type={type}
             disabled={(disabled || loading) && true}
             className={className}
         >

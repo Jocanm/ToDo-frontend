@@ -6,7 +6,7 @@ import { startCreatingCatsTodos } from '../../redux/actions/todoActions'
 import { Loading } from '../LoadingView'
 import { toastStyle } from '../../helpers/toastStyle'
 
-export const CatFactsModal = ({ open, setOpen }) => {
+export const CatFactsModal = React.memo(({ open, setOpen }) => {
 
     const dispatch = useDispatch()
     const [numberOfFacts, setNumberOfFacts] = useState("")
@@ -38,8 +38,8 @@ export const CatFactsModal = ({ open, setOpen }) => {
             <div className="modal__container">
                 <h2 className="modal__title">Random facts about cats</h2>
                 <main className="modal__main-content mb-4">
-                    <p>No task in mind? try adding some random phrases about cats as your tasks.</p>
-                    <p>you can add up to 100 phrases each time</p>
+                    <p>No task in mind? try adding some number and we will get you some random phrases about cats as your tasks.</p>
+                    <p>We can give you up to 100 phrases each time.</p>
                 </main>
                 {
                     loadingCatsFacts ?
@@ -63,4 +63,4 @@ export const CatFactsModal = ({ open, setOpen }) => {
             </div>
         </Dialog>
     )
-}
+})

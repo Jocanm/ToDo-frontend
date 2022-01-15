@@ -33,7 +33,7 @@ export const TodosItem = ({ title, done, id, userId }) => {
     }
 
     return (
-        <li className="index__todo-item">
+        <li className="index__todo-item animate__animated animate__fadeIn animate__faster">
             <div>
                 {
                     loading ?
@@ -46,11 +46,11 @@ export const TodosItem = ({ title, done, id, userId }) => {
                 {
                     !editMode ?
                         <h4 className={`${done && 'line-through'}`}>{title}</h4> :
-                        <input 
-                        className="outline-none border-2 px-1 border-gray-200 rounded-lg w-full"
+                        <textarea 
+                        className="outline-none border-2 px-1 border-gray-200 rounded-lg w-full sm:resize-none"
                         type="text" 
                         value={todoDescription} 
-                        onChange={(e) => { setTodoDescription(e.target.value) }} />
+                        onChange={(e) => { setTodoDescription(e.target.value) }}></textarea>
                 }
             </div>
             <div>

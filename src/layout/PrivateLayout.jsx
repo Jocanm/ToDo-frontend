@@ -10,9 +10,9 @@ export const PrivateLayout = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(startGettingTodos())
-    },[dispatch])
+    }, [dispatch])
 
     useEffect(() => {
         if (!id) {
@@ -24,9 +24,13 @@ export const PrivateLayout = () => {
         return <Loading />
     }
     return (
-        <div className="index__main-screen">
-            <Navbar/>
-            <Outlet/>
+        <div className="index__main-screen overflow-hidden">
+            <div className="h-full w-full">
+                <Navbar />
+                <main className="overflow-auto w-full h-full">
+                    <Outlet />
+                </main>
+            </div>
         </div>
     )
 }
