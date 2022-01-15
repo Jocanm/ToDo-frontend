@@ -78,11 +78,22 @@ export const startRefreshToken = () => {
     }
 }
 
+export const startLogout = () => {
+
+    return (dispatch) =>{
+
+        localStorage.clear()
+        dispatch(logoutUser())
+    }
+}
+
 const loginUser = (user) =>{
     return {
         type:types.authActiveUser,
         payload:user
     }
 }
+
+const logoutUser = () =>({type:types.authLogout})
 
 const endChecking = () => ({type:types.authEndChecking})

@@ -19,8 +19,8 @@ export const Index = () => {
     const dispatch = useDispatch()
 
     const handleFindTask = () => {
-        if (title.length < 3) {
-            toast.error("Todo description must be at least 3 characters", toastStyle)
+        if (title.length === 0) {
+            toast.error("Todo description can't be empty", toastStyle)
             return;
         }
         setTitleFilter(title)

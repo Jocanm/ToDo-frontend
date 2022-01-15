@@ -18,12 +18,11 @@ export const startGettingTodos = () => {
             }
 
             else{
-                toast.error(body.msg)
+                console.error(body.msg);
             }
 
         } catch (error) {
             console.error(error);
-            toast.error("Something went wrong :/",toastStyle)
         }
 
     }

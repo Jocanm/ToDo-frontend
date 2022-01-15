@@ -73,7 +73,7 @@
 
 .index__todo-item{
     
-    @apply  bg-white px-2 py-4 rounded-lg flex items-center justify-between;
+    @apply  bg-white px-2 py-4 rounded-lg flex items-center justify-between ;
 
     & > div{
         @apply flex items-center gap-3 w-full;

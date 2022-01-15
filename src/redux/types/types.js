@@ -5,6 +5,7 @@ export const types = {
 
     authActiveUser:'[Auth] active user',
     authEndChecking:'[Auth] end checking',
+    authLogout: '[Auth] logout',
 
     todosCreateTodo: '[Todo] create todo',
     todosSetTodos:'[Todos] todosSetTodos',

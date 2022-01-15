@@ -64,13 +64,13 @@ export const Register = () => {
                     text="Join us"
                 />
             </form>
-            <section className="auth__brand-login">
+            {/* <section className="auth__brand-login">
                 <h2>Or try with these</h2>
                 <div>
                     <i className="fab fa-google"></i>
                     <i className="fab fa-github"></i>
                 </div>
-            </section>
+            </section> */}
             <h3 onClick={() => { navigate("/auth/login") }}>
                 Already have an account? <span>Sing in</span>
             </h3>

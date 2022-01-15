@@ -27,8 +27,8 @@ export const Login = () => {
         <div className="auth__container">
             <h2>Login to Your Account</h2>
             <form 
-            onSubmit={handleLoginUser}
             ref={form}
+            onSubmit={handleLoginUser}
             onChange={updateFormData}
             className="auth__input-container">
                 <Input
@@ -51,13 +51,13 @@ export const Login = () => {
                     text="Start now"
                 />
             </form>
-            <section className="auth__brand-login">
+            {/* <section className="auth__brand-login">
                 <h2>Or try with these</h2>
                 <div>
                     <i className="fab fa-google"></i>
                     <i className="fab fa-github"></i>
                 </div>
-            </section>
+            </section> */}
             <h3 onClick={()=>{navigate("/auth/register")}}>
                 Don't you have an account? <span>Sing up</span>
             </h3>
