@@ -14,7 +14,7 @@ export const Navbar = () => {
     return (
         <div className="index__navbar-container">
             <div className="index__navbar relative">
-                <h3>Todo List Manager</h3>
+                <h3>Todo List</h3>
                 <div>
                     <h2>{name.split(" ")[0] + " " + name.split(" ")[1]}</h2>
                     <i 
