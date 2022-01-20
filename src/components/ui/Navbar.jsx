@@ -16,7 +16,11 @@ export const Navbar = () => {
             <div className="index__navbar relative">
                 <h3>Todo List</h3>
                 <div>
-                    <h2>{name.split(" ")[0] + " " + name.split(" ")[1]}</h2>
+                    {
+                        name.split(" ")[1] ?
+                        (<h2>{name.split(" ")[0] + " " + name.split(" ")[1]}</h2>):
+                        (<h2>{name.split(" ")[0]}</h2>)
+                    }
                     <i 
                     onClick={handleLogout}
                     className="fas fa-sign-out-alt cursor-pointer"></i>
