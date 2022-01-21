@@ -12,7 +12,8 @@ export const CatFactsModal = React.memo(({ open, setOpen }) => {
     const [numberOfFacts, setNumberOfFacts] = useState("")
     const [loadingCatsFacts, setLoadingCatsFacts] = useState(false)
 
-    const getRandomFacts = async () => {
+    const getRandomFacts = async (e) => {
+        e.preventDefault()
         const number = Number(numberOfFacts)
         if (!(/^[1-9]\d*$/.test(number))) {
             toast.error("Please provide a integer and positive number",toastStyle)
@@ -46,12 +47,14 @@ export const CatFactsModal = React.memo(({ open, setOpen }) => {
 
                         <Loading fullScreen={false} color='#fb923c' /> :
 
-                        <form className="modal__form">
+                        <form 
+                        onSubmit={getRandomFacts}
+                        className="modal__form">
                             <input value={numberOfFacts} onChange={(e) => setNumberOfFacts(e.target.value)} type="number" placeholder="Number of phrases..." />
                             <section className="modal__button-container">
                                 <button
-                                    type="button"
-                                    onClick={getRandomFacts}
+                                    type="submit"
+                                    // onClick={getRandomFacts}
                                 >Submit</button>
                                 <button
                                     type="button"
