@@ -19,10 +19,6 @@ export const CatFactsModal = React.memo(({ open, setOpen }) => {
             toast.error("Please provide a integer and positive number",toastStyle)
             return;
         }
-        if (number > 100) {
-            toast.error("The maximum number of phrases is 100",toastStyle)
-            return;
-        }
         setLoadingCatsFacts(true)
         const res = await fetch(`https://catfact.ninja/facts?max_length=100&limit=${number}`)
         const body = await res.json()
@@ -40,7 +36,6 @@ export const CatFactsModal = React.memo(({ open, setOpen }) => {
                 <h2 className="modal__title">Random facts about cats</h2>
                 <main className="modal__main-content mb-4">
                     <p>No task in mind? try adding some number and we will get you some random phrases about cats as your tasks.</p>
-                    <p>We can give you up to 100 phrases each time.</p>
                 </main>
                 {
                     loadingCatsFacts ?
